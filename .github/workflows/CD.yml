@@ -1,5 +1,4 @@
 name: CDNew PipeLine
-
 on:
   workflow_run: 
     workflows: ["CI Pipeline"]
@@ -8,16 +7,16 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        
       - name: Pull Docker Image
-        run: sudo docker pull saimadan82/loanprediction:latest
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER_NAME}}
+        run: sudo docker pull $DOCKER_USER/loanprediction:latest
         
       - name: Delete Old Docker Image
         run: sudo docker rm -f loanprediction-container || true
 
       - name: Run Docker Container
-        run: sudo docker run -it -d -p 8001:8001 --name loanprediction-container saimadan82/loanprediction:latest
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER_NAME}}
+        run: sudo docker run -it -d -p 8001:8001 --name loanprediction-container $DOCKER_USER/loanprediction:latest
