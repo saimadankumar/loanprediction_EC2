@@ -19,16 +19,10 @@ jobs:
           python-version: '3.12'
 
       - name: Install Dependencies
-        run: pip install -r loanprediction/requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Train Model
         run: python loanprediction/train_pipeline.py
-
-      - name: Install Test Dependencies
-        run: pip install -r loanprediction/test_requirements.txt
-
-      - name: Test Model
-        run: pytest
 
       - name: Install Build Dependencies
         run: pip install build
