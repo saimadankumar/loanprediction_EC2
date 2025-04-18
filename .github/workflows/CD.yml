@@ -10,8 +10,12 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
       - name: Pull Docker Image
         run: sudo docker pull saimadan82/loanprediction:latest
+        
       - name: Delete Old Docker Image
         run: sudo docker rm -f loanprediction-container || true
 
