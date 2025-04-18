@@ -1,4 +1,4 @@
-name: CD PipeLine
+name: CDNew PipeLine
 
 on:
   workflow_run: 
