@@ -1,0 +1,80 @@
+# Package Overview
+package_name: loanprediction
+
+# Data Files
+training_data_file: Loan_default.csv
+
+# Variables
+# The variable we are attempting to predict (cnt)
+target: Default
+
+pipeline_name: loanprediction
+pipeline_save_file: loanprediction_output_v
+
+# Features that will go inside processing pipeline
+features:
+  - Age
+  - Income
+  - LoanAmount
+  - CreditScore
+  - MonthsEmployed
+  - NumCreditLines
+  - InterestRate
+  - LoanTerm
+  - DTIRatio
+  - Education
+  - EmploymentType
+  - MaritalStatus
+  - HasMortgage
+  - HasDependents
+  - LoanPurpose
+  - HasCoSigner
+
+
+unused_fields:  # Features to drop before pipeline
+  - LoanID
+
+
+# Features names
+age_var: Age
+income_var: Income
+loanAmount_var: LoanAmount
+creditScore_var: CreditScore
+monthsEmployed_var: MonthsEmployed
+numCreditLines_var: NumCreditLines
+interestRate_var: InterestRate
+loanTerm_var: LoanTerm
+dTIRatio_var: DTIRatio
+education_var: Education
+employmentType_var: EmploymentType
+maritalStatus_var: MaritalStatus
+hasMortgage_var: HasMortgage
+hasDependents_var: HasDependents
+loanPurpose_var: LoanPurpose
+hasCoSigner_var: HasCoSigner
+
+
+# Mappings for Ordinal categorical features
+hasMortgage_mappings:
+  No: 0
+  Yes: 1
+
+hasDependents_mappings:
+  No: 0
+  Yes: 1
+
+hasCoSigner_mappings:
+  No: 0
+  Yes: 1
+
+
+  
+# Set train/test split
+test_size: 0.20
+
+# Set the random seed
+random_state: 42
+
+# Alogrithm parameters
+n_estimators: 100
+max_depth: 10
